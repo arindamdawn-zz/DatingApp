@@ -1,0 +1,7 @@
+# don't track vscode files
+.vscode
+# don't track auto generated folders of dotnet
+obj
+bin
+# don't track databases
+*.db
