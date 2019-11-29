@@ -5,3 +5,6 @@ obj
 bin
 # don't track databases
 *.db
+*.db-**
+# don't track appsettings file
+appsettings.json
