@@ -7,4 +7,4 @@ bin
 *.db
 *.db-**
 # don't track appsettings file
-appsettings.json
+appsettings.*
