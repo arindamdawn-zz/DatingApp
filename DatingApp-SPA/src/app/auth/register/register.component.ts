@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { AuthService } from "../auth.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-register",
@@ -10,7 +11,11 @@ import { AuthService } from "../auth.service";
 export class RegisterComponent implements OnInit {
   loading = false;
   registerUserForm: FormGroup;
-  constructor(private fb: FormBuilder, private authService: AuthService) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.registerUserForm = this.fb.group({
@@ -25,10 +30,14 @@ export class RegisterComponent implements OnInit {
   }
 
   onClickRegister() {
-    this.authService
-      .registerUser(this.registerUserForm.value)
-      .subscribe(response => {
-        console.log(response), error => console.log(error);
-      });
+    this.authService.registerUser(this.registerUserForm.value).subscribe(
+      next => {
+        console.log("Successfully Registered!");
+        this.router.navigate(["/auth/login"]);
+      },
+      error => {
+        console.log("Failed to register");
+      }
+    );
   }
 }

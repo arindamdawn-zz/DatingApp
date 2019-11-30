@@ -7,7 +7,8 @@ import {
   NbCardModule,
   NbInputModule,
   NbButtonModule,
-  NbSpinnerModule
+  NbSpinnerModule,
+  NbAlertModule
 } from "@nebular/theme";
 import { RouterModule } from "@angular/router";
 import { ReactiveFormsModule } from '@angular/forms';
@@ -19,6 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     NbInputModule,
     NbButtonModule,
     NbSpinnerModule,
+    NbAlertModule,
     RouterModule,
     ReactiveFormsModule
   ],

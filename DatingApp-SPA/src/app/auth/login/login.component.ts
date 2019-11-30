@@ -10,6 +10,8 @@ import { AuthService } from "../auth.service";
 export class LoginComponent implements OnInit {
   loading = false;
   loginUserForm: FormGroup;
+  alertMsg: string;
+  authenticated: boolean = null;
   constructor(private fb: FormBuilder, private authService: AuthService) {}
 
   ngOnInit() {
@@ -18,7 +20,7 @@ export class LoginComponent implements OnInit {
       password: ["", [Validators.required]]
     });
   }
-
+  o;
   toggleLoadingAnimation() {
     this.loading = true;
     setTimeout(() => (this.loading = false), 3000);
@@ -26,8 +28,14 @@ export class LoginComponent implements OnInit {
 
   onClickLogin() {
     this.authService.loginUser(this.loginUserForm.value).subscribe(
-      res => console.log(res),
-      error => console.log(error)
+      next => {
+        this.alertMsg = "Successfully logged in";
+        this.authenticated = true;
+      },
+      error => {
+        this.alertMsg = "Failed to login";
+        this.authenticated = false;
+      }
     );
   }
 }
