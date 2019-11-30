@@ -1,0 +1,23 @@
+<div class="login-container" [formGroup]="registerUserForm">
+  <input type="text" nbInput fullWidth status="basic" placeholder="username" formControlName="username" />
+  <input
+    type="password"
+    nbInput
+    fullWidth
+    status="basic"
+    placeholder="password"
+    formControlName="password"
+  />
+  <button
+    [nbSpinner]="loading"
+    nbSpinnerStatus="success"
+    nbButton
+    fullWidth
+    [disabled]="registerUserForm.invalid"
+    (click)="onClickRegister()"
+  >
+    <span *ngIf="!loading">Register</span>
+  </button>
+  <span>Have an account?</span>
+  <a [routerLink]="['/auth/login']">Login</a>
+</div>
