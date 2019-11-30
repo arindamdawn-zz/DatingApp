@@ -3,6 +3,7 @@ import { CommonModule } from "@angular/common";
 import { NbThemeModule, NbLayoutModule } from "@nebular/theme";
 import { NbEvaIconsModule } from "@nebular/eva-icons";
 import { EnsureModuleLoadedOnceGuard } from "./ensure-module-loaded-once.guard";
+import { ErrorInterceptorProvider } from './interceptors/error.interceptor';
 
 @NgModule({
   imports: [
@@ -11,6 +12,7 @@ import { EnsureModuleLoadedOnceGuard } from "./ensure-module-loaded-once.guard";
     NbLayoutModule,
     NbEvaIconsModule
   ],
+  providers: [ErrorInterceptorProvider],
   declarations: [],
   exports: [NbThemeModule, NbLayoutModule, NbEvaIconsModule]
 })

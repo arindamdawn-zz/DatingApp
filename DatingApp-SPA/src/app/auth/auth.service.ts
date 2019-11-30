@@ -12,7 +12,11 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   registerUser(user: UserForRegister) {
-    return this.http.post(`${this.API_ENDPOINT}register`, user).pipe(
+    return this.http.post(`${this.API_ENDPOINT}register`, user);
+  }
+
+  loginUser(user: UserForLogin) {
+    return this.http.post(`${this.API_ENDPOINT}login`, user).pipe(
       map((response: any) => {
         const user = response;
         if (user) {
@@ -20,9 +24,5 @@ export class AuthService {
         }
       })
     );
-  }
-
-  loginUser(user: UserForLogin) {
-    return this.http.post(`${this.API_ENDPOINT}login`, user);
   }
 }
