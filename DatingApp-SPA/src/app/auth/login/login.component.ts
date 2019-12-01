@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { AuthService } from "../auth.service";
 import { NbToastrService } from "@nebular/theme";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-login",
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private toastrService: NbToastrService
+    private toastrService: NbToastrService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -39,6 +41,7 @@ export class LoginComponent implements OnInit {
           preventDuplicates: true
         });
         this.authenticated = true;
+        this.router.navigate(["/members"]);
       },
       error => {
         this.alertMsg = "Failed to login";

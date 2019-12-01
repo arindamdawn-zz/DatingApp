@@ -3,6 +3,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { AuthComponent } from "./auth/auth.component";
 import { LoginComponent } from "./auth/login/login.component";
 import { RegisterComponent } from "./auth/register/register.component";
+import { AuthGuard } from "./auth/auth.guard";
 
 const routes: Routes = [
   {
@@ -24,20 +25,30 @@ const routes: Routes = [
     ]
   },
   {
-    path: "members",
-    loadChildren: () =>
-      import("./feature/members/members.module").then(m => m.MembersModule)
+    path: "",
+    runGuardsAndResolvers: "always",
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: "members",
+        loadChildren: () =>
+          import("./feature/members/members.module").then(m => m.MembersModule)
+      },
+      {
+        path: "lists",
+        loadChildren: () =>
+          import("./feature/lists/lists.module").then(m => m.ListsModule)
+      },
+      {
+        path: "messages",
+        loadChildren: () =>
+          import("./feature/messages/messages.module").then(
+            m => m.MessagesModule
+          )
+      }
+    ]
   },
-  {
-    path: "lists",
-    loadChildren: () =>
-      import("./feature/lists/lists.module").then(m => m.ListsModule)
-  },
-  {
-    path: "messages",
-    loadChildren: () =>
-      import("./feature/messages/messages.module").then(m => m.MessagesModule)
-  }
+  { path: "**", redirectTo: "", pathMatch: "full" }
 ];
 
 @NgModule({
