@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { AuthService } from "../auth.service";
 import { Router } from "@angular/router";
+import { NbToastrService } from "@nebular/theme";
 
 @Component({
   selector: "app-register",
@@ -14,7 +15,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private toastrService: NbToastrService
   ) {}
 
   ngOnInit() {
@@ -32,11 +34,15 @@ export class RegisterComponent implements OnInit {
   onClickRegister() {
     this.authService.registerUser(this.registerUserForm.value).subscribe(
       next => {
-        console.log("Successfully Registered!");
+        this.toastrService.success("Successfully Registered", "Register", {
+          preventDuplicates: true
+        });
         this.router.navigate(["/auth/login"]);
       },
       error => {
-        console.log("Failed to register");
+        this.toastrService.danger("Failed to register", "Register", {
+          preventDuplicates: true
+        });
       }
     );
   }

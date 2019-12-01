@@ -1,6 +1,6 @@
 import { NgModule, Optional, SkipSelf } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { NbThemeModule, NbLayoutModule } from "@nebular/theme";
+import { NbThemeModule, NbLayoutModule, NbToastrModule } from "@nebular/theme";
 import { NbEvaIconsModule } from "@nebular/eva-icons";
 import { EnsureModuleLoadedOnceGuard } from "./ensure-module-loaded-once.guard";
 import { ErrorInterceptorProvider } from './interceptors/error.interceptor';
@@ -10,7 +10,8 @@ import { ErrorInterceptorProvider } from './interceptors/error.interceptor';
     CommonModule,
     NbThemeModule.forRoot({ name: "dark" }),
     NbLayoutModule,
-    NbEvaIconsModule
+    NbEvaIconsModule,
+    NbToastrModule.forRoot(),
   ],
   providers: [ErrorInterceptorProvider],
   declarations: [],

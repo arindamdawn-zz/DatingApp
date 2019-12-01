@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { AuthService } from "../auth.service";
+import { NbToastrService } from "@nebular/theme";
 
 @Component({
   selector: "app-login",
@@ -12,7 +13,11 @@ export class LoginComponent implements OnInit {
   loginUserForm: FormGroup;
   alertMsg: string;
   authenticated: boolean = null;
-  constructor(private fb: FormBuilder, private authService: AuthService) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private toastrService: NbToastrService
+  ) {}
 
   ngOnInit() {
     this.loginUserForm = this.fb.group({
@@ -30,10 +35,16 @@ export class LoginComponent implements OnInit {
     this.authService.loginUser(this.loginUserForm.value).subscribe(
       next => {
         this.alertMsg = "Successfully logged in";
+        this.toastrService.success(this.alertMsg, "Login", {
+          preventDuplicates: true
+        });
         this.authenticated = true;
       },
       error => {
         this.alertMsg = "Failed to login";
+        this.toastrService.danger(this.alertMsg, "Login", {
+          preventDuplicates: true
+        });
         this.authenticated = false;
       }
     );

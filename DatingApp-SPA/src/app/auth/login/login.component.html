@@ -28,9 +28,4 @@
   <span>New User?</span>
   <a [routerLink]="['/auth/register']">Register</a>
 </div>
-<nb-alert status="danger" *ngIf="!authenticated && alertMsg">
-  {{ alertMsg }}
-</nb-alert>
-<nb-alert status="success" *ngIf="authenticated">
-  {{ alertMsg }}
-</nb-alert>
+
