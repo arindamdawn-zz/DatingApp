@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
   }
 
   onClickLogin() {
-    this.authService.loginUser(this.loginUserForm.value).subscribe(
+    this.authService.login(this.loginUserForm.value).subscribe(
       next => {
         this.alertMsg = "Successfully logged in";
         this.toastrService.success(this.alertMsg, "Login", {

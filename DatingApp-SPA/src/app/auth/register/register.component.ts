@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onClickRegister() {
-    this.authService.registerUser(this.registerUserForm.value).subscribe(
+    this.authService.register(this.registerUserForm.value).subscribe(
       next => {
         this.toastrService.success("Successfully Registered", "Register", {
           preventDuplicates: true

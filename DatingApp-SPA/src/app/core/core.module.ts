@@ -1,9 +1,16 @@
 import { NgModule, Optional, SkipSelf } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { NbThemeModule, NbLayoutModule, NbToastrModule } from "@nebular/theme";
+import {
+  NbThemeModule,
+  NbLayoutModule,
+  NbToastrModule,
+  NbActionsModule,
+  NbContextMenuModule,
+  NbMenuModule
+} from "@nebular/theme";
 import { NbEvaIconsModule } from "@nebular/eva-icons";
 import { EnsureModuleLoadedOnceGuard } from "./ensure-module-loaded-once.guard";
-import { ErrorInterceptorProvider } from './interceptors/error.interceptor';
+import { ErrorInterceptorProvider } from "./interceptors/error.interceptor";
 
 @NgModule({
   imports: [
@@ -11,11 +18,21 @@ import { ErrorInterceptorProvider } from './interceptors/error.interceptor';
     NbThemeModule.forRoot({ name: "dark" }),
     NbLayoutModule,
     NbEvaIconsModule,
-    NbToastrModule.forRoot(),
+    NbActionsModule,
+    NbContextMenuModule,
+    NbMenuModule.forRoot(),
+    NbToastrModule.forRoot()
   ],
   providers: [ErrorInterceptorProvider],
   declarations: [],
-  exports: [NbThemeModule, NbLayoutModule, NbEvaIconsModule]
+  exports: [
+    NbThemeModule,
+    NbLayoutModule,
+    NbEvaIconsModule,
+    NbActionsModule,
+    NbContextMenuModule,
+    NbMenuModule
+  ]
 })
 export class CoreModule extends EnsureModuleLoadedOnceGuard {
   /**

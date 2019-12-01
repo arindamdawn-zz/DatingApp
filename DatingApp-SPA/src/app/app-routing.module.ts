@@ -22,6 +22,21 @@ const routes: Routes = [
       { path: "login", component: LoginComponent },
       { path: "register", component: RegisterComponent }
     ]
+  },
+  {
+    path: "members",
+    loadChildren: () =>
+      import("./feature/members/members.module").then(m => m.MembersModule)
+  },
+  {
+    path: "lists",
+    loadChildren: () =>
+      import("./feature/lists/lists.module").then(m => m.ListsModule)
+  },
+  {
+    path: "messages",
+    loadChildren: () =>
+      import("./feature/messages/messages.module").then(m => m.MessagesModule)
   }
 ];
 

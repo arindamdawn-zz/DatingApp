@@ -1,11 +1,23 @@
-<nb-layout>
-  <nb-layout-header fixed>
-    <h1>Dating App</h1>
-  </nb-layout-header>
+<main>
+  <nb-layout>
+    <nb-layout-header>
+      <h3>Dating App</h3>
+      <nb-actions class="left" *ngIf="loggedIn()">
+        <nb-action>Matches</nb-action>
+        <nb-action>Lists</nb-action>
+        <nb-action>Messages</nb-action>
+        <nb-action
+          class="profile"
+          [nbContextMenu]="items"
+          nbContextMenuTag="user"
+          nbContextMenuPlacement="bottom"
+          >{{ authService.decodedToken?.unique_name }}</nb-action
+        >
+      </nb-actions>
+    </nb-layout-header>
 
-  <nb-layout-column>
-    <div>
+    <nb-layout-column>
       <router-outlet></router-outlet>
-    </div>
-  </nb-layout-column>
-</nb-layout>
+    </nb-layout-column>
+  </nb-layout>
+</main>
