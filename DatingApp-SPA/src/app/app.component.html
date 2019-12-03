@@ -1,11 +1,17 @@
 <main>
   <nb-layout>
     <nb-layout-header>
-      <h3>Dating App</h3>
+      <h3 routerLink="/">Dating App</h3>
       <nb-actions class="left" *ngIf="loggedIn()" size="large">
-        <nb-action routerLink="/members" routerLinkActive="active">Matches</nb-action>
-        <nb-action routerLink="/lists" routerLinkActive="active">Lists</nb-action>
-        <nb-action routerLink="/messages" routerLinkActive="active">Messages</nb-action>
+        <nb-action routerLink="/members" routerLinkActive="active"
+          >Matches</nb-action
+        >
+        <nb-action routerLink="/lists" routerLinkActive="active"
+          >Lists</nb-action
+        >
+        <nb-action routerLink="/messages" routerLinkActive="active"
+          >Messages</nb-action
+        >
         <nb-action
           class="profile"
           [nbContextMenu]="items"

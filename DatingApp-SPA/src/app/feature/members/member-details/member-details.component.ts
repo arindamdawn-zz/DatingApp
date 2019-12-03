@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { User } from "src/app/auth/models/User";
+import { Photo } from "src/app/auth/models/Photo";
 
 @Component({
   selector: "app-member-details",
@@ -9,6 +10,7 @@ import { User } from "src/app/auth/models/User";
 })
 export class MemberDetailsComponent implements OnInit {
   user: User;
+  photos: Photo[];
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
