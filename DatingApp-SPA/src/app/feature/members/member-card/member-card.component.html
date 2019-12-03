@@ -1,0 +1,19 @@
+<nb-card (click)="viewDetails()">
+  <nb-card-header>
+    <img [src]="user.photoUrl" alt="profile-pic" />
+  </nb-card-header>
+  <nb-card-body>
+    <div>
+      <nb-icon icon="person-outline"></nb-icon>
+      <span class="username">{{ user.username | titlecase }}</span>
+    </div>
+    <div class="other-info">
+      <span class="age">
+        {{ user.age }}
+      </span>
+      <span class="country">
+        {{ user.country }}
+      </span>
+    </div>
+  </nb-card-body>
+</nb-card>

@@ -1,11 +1,20 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { MembersComponent } from "./members.component";
+import { MembersListComponent } from "./members-list/members-list.component";
+import { MemberDetailsComponent } from "./member-details/member-details.component";
+import { MemberDetailsResolver } from "src/app/core/resolvers/member-details.resolver";
 
 const routes: Routes = [
   {
     path: "",
-    component: MembersComponent
+    component: MembersListComponent
+  },
+  {
+    path: ":id",
+    component: MemberDetailsComponent,
+    resolve: {
+      user: MemberDetailsResolver
+    }
   }
 ];
 

@@ -1,15 +1,19 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-import { MembersRoutingModule } from './members-routing.module';
-import { MembersComponent } from './members.component';
-
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { NbCardModule, NbIconModule, NbLayoutModule } from "@nebular/theme";
+import { MembersListComponent } from "./members-list/members-list.component";
+import { MemberCardComponent } from "./member-card/member-card.component";
+import { MembersRoutingModule } from "./members-routing.module";
+import { MemberDetailsComponent } from "./member-details/member-details.component";
+import { MemberDetailsResolver } from "src/app/core/resolvers/member-details.resolver";
 
 @NgModule({
-  declarations: [MembersComponent],
-  imports: [
-    CommonModule,
-    MembersRoutingModule
-  ]
+  imports: [CommonModule, MembersRoutingModule, NbCardModule, NbIconModule],
+  declarations: [
+    MembersListComponent,
+    MemberCardComponent,
+    MemberDetailsComponent
+  ],
+  providers: [MemberDetailsResolver]
 })
-export class MembersModule { }
+export class MembersModule {}

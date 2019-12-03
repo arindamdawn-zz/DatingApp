@@ -1,0 +1,8 @@
+<div class="members-list-container">
+  <ng-container *ngFor="let user of users">
+    <app-member-card
+      [user]="user"
+      (viewDetailsClicked)="handleViewDetails($event)"
+    ></app-member-card>
+  </ng-container>
+</div>

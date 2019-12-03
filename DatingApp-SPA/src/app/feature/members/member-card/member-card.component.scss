@@ -1,0 +1,28 @@
+nb-card {
+  nb-card-header {
+    overflow: hidden;
+  }
+
+  img {
+    width: 100%;
+    transform: scale(1.15);
+
+    &:hover {
+      transform: scale(1.25);
+      transition: 0.5s;
+    }
+  }
+
+  .username {
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
+  }
+
+  .other-info {
+    padding: 0.5rem 0;
+  }
+
+  .country {
+    margin-left: 0.5rem;
+  }
+}
