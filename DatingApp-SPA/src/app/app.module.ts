@@ -7,7 +7,12 @@ import { AppComponent } from "./app.component";
 import { ValueComponent } from "./value/value.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { CoreModule } from "./core/core.module";
-import { AuthModule } from './auth/auth.module';
+import { AuthModule } from "./auth/auth.module";
+import { JwtModule } from "@auth0/angular-jwt";
+
+function tokenGetter() {
+  return localStorage.getItem("token");
+}
 
 @NgModule({
   declarations: [AppComponent, ValueComponent],
@@ -17,7 +22,14 @@ import { AuthModule } from './auth/auth.module';
     HttpClientModule,
     BrowserAnimationsModule,
     CoreModule,
-    AuthModule
+    AuthModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ["localhost:5000"],
+        blacklistedRoutes: ["localhost:5000/auth"]
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

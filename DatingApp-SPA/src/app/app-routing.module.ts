@@ -32,7 +32,9 @@ const routes: Routes = [
       {
         path: "members",
         loadChildren: () =>
-          import("./feature/members/members.module").then(m => m.MembersModule)
+          import("./feature/members/members.module").then(
+            m => m.MembersModule
+          )
       },
       {
         path: "lists",

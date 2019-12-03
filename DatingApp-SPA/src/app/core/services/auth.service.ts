@@ -1,15 +1,16 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { UserForRegister } from "./models/userForRegister";
-import { UserForLogin } from "./models/userForLogin";
+import { UserForRegister } from "../../auth/models/userForRegister";
+import { UserForLogin } from "../../auth/models/userForLogin";
 import { map } from "rxjs/operators";
 import { JwtHelperService } from "@auth0/angular-jwt";
+import { environment } from "../../../environments/environment";
 
 @Injectable({
   providedIn: "root"
 })
 export class AuthService {
-  private readonly API_ENDPOINT = "http://localhost:5000/api/auth/";
+  private readonly API_ENDPOINT = environment.baseUrl + "auth/";
   jwtHelper = new JwtHelperService();
   decodedToken: any;
   username: string;
@@ -40,7 +41,7 @@ export class AuthService {
     return !this.jwtHelper.isTokenExpired(token);
   }
 
-  get token(): any{
+  get token(): any {
     return this.decodedToken;
   }
 }
