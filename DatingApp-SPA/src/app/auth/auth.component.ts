@@ -14,6 +14,6 @@ export class AuthComponent implements OnInit {
     this.checkAuthentication();
   }
   checkAuthentication() {
-    if (this.authService.loggedIn) this.router.navigate(["/members"]);
+    if (this.authService.loggedIn()) this.router.navigate(["/members"]);
   }
 }

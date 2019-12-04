@@ -1,0 +1,63 @@
+<section class="header">
+  <h2 class="title">Your profile</h2>
+  <nb-alert outline="warning"
+    >You have made changes! Any unsaved changes will be lost.</nb-alert
+  >
+</section>
+
+<div class="member-edit-container">
+  <section>
+    <nb-card>
+      <nb-card-header>
+        <img [src]="user.photoUrl" alt="profile-picture" class="full-width" />
+      </nb-card-header>
+      <nb-card-body>
+        <p>
+          Location: {{ user.city | titlecase }}, {{ user.country | titlecase }}
+        </p>
+        <p>Age: {{ user.age }}</p>
+        <p>Member Since: {{ user.created | date }}</p>
+        <p>Last Active: {{ user.lastActive | date }}</p>
+      </nb-card-body>
+    </nb-card>
+  </section>
+  <section class="other-info">
+    <nb-card>
+      <nb-tabset>
+        <nb-tab tabTitle="Edit Profile">
+          <div class="tab-content">
+            <form [formGroup]="userEditForm">
+              <label for="description">Description</label>
+              <textarea
+                nbInput
+                fullWidth
+                placeholder="Add description"
+                formControlName="description"
+              ></textarea>
+              <label for="lookingFor">Looking For</label>
+              <textarea
+                nbInput
+                fullWidth
+                placeholder="Add looking for"
+                formControlName="lookingFor"
+              ></textarea>
+              <label for="interests">Interests</label>
+              <textarea
+                nbInput
+                fullWidth
+                placeholder="Add interests"
+                formControlName="interests"
+              ></textarea>
+            </form>
+          </div>
+        </nb-tab>
+        <nb-tab tabTitle="Edit Photos">
+          <div class="tab-content">
+            <h3>Interests</h3>
+            {{ user.interests }}
+          </div>
+        </nb-tab>
+      </nb-tabset>
+    </nb-card>
+  </section>
+</div>

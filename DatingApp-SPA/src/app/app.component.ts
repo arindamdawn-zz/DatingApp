@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { AuthService } from "./core/services/auth.service";
 import { Router } from "@angular/router";
-import { NbMenuService } from "@nebular/theme";
+import { NbMenuService, NbThemeService } from "@nebular/theme";
 import { filter, map } from "rxjs/operators";
 
 @Component({
@@ -11,16 +11,18 @@ import { filter, map } from "rxjs/operators";
 })
 export class AppComponent {
   items = [
-    {
-      title: "Logout"
-    }
+    { title: "Edit Profile" },
+    { title: "Switch Theme" },
+    { title: "Logout" }
   ];
   loggedInUsername: string;
+  currentTheme: string = "dark";
 
   constructor(
     public authService: AuthService,
     private router: Router,
-    private nbMenuService: NbMenuService
+    private nbMenuService: NbMenuService,
+    private themeService: NbThemeService
   ) {}
 
   ngOnInit(): void {
@@ -36,7 +38,17 @@ export class AppComponent {
         map(({ item: { title } }) => title)
       )
       .subscribe(title => {
-        if (title === "Logout") this.logout();
+        switch (title) {
+          case "Logout":
+            this.logout();
+            break;
+          case "Edit Profile":
+            this.editProfile();
+            break;
+          case "Switch Theme":
+            this.switchTheme();
+            break;
+        }
       });
   }
 
@@ -44,8 +56,17 @@ export class AppComponent {
     return this.authService.loggedIn();
   }
 
+  editProfile(): void {
+    this.router.navigate(["/members/edit"]);
+  }
+
   logout(): void {
     localStorage.clear();
     this.router.navigate(["/auth/login"]);
+  }
+
+  switchTheme() {
+    this.currentTheme = this.currentTheme === "dark" ? "default" : "dark";
+    this.themeService.changeTheme(this.currentTheme);
   }
 }

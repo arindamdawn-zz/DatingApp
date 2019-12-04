@@ -15,33 +15,31 @@
     </nb-card>
   </section>
   <section class="other-info">
-    <nb-tabset>
-      <nb-tab tabTitle="About">
-        <div class="tab-content">
-          <h3>Description</h3>
-          {{ user.introduction }}
-          <h3>Looking For</h3>
-          {{ user.lookingFor }}
-        </div>
-      </nb-tab>
-      <nb-tab tabTitle="Interests">
-        <div class="tab-content">
-          <h3>Interests</h3>
-          {{ user.interests }}
-        </div>
-      </nb-tab>
-      <nb-tab tabTitle="Photos">
-        <div class="tab-content">
-          <ul *ngFor="let photo of user.photos">
-            <li>
-              <img [src]="photo.url" [alt]="photo.description" />
-            </li>
-          </ul>
-        </div>
-      </nb-tab>
-      <nb-tab tabTitle="Messages">
-        Messages
-      </nb-tab>
-    </nb-tabset>
+    <nb-card>
+      <nb-tabset>
+        <nb-tab tabTitle="About">
+          <div class="tab-content">
+            <h3>Description</h3>
+            {{ user.introduction }}
+            <h3>Looking For</h3>
+            {{ user.lookingFor }}
+          </div>
+        </nb-tab>
+        <nb-tab tabTitle="Interests">
+          <div class="tab-content">
+            <h3>Interests</h3>
+            {{ user.interests }}
+          </div>
+        </nb-tab>
+        <nb-tab tabTitle="Photos">
+          <div class="tab-content">
+            <gallery [items]="photos"></gallery>
+          </div>
+        </nb-tab>
+        <nb-tab tabTitle="Messages">
+          Messages
+        </nb-tab>
+      </nb-tabset>
+    </nb-card>
   </section>
 </div>
