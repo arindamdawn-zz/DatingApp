@@ -1,6 +1,6 @@
 <section class="header">
   <h2 class="title">Your profile</h2>
-  <nb-alert outline="warning"
+  <nb-alert outline="warning" *ngIf="userEditForm.dirty"
     >You have made changes! Any unsaved changes will be lost.</nb-alert
   >
 </section>
@@ -19,6 +19,17 @@
         <p>Member Since: {{ user.created | date }}</p>
         <p>Last Active: {{ user.lastActive | date }}</p>
       </nb-card-body>
+      <nb-card-footer>
+        <button
+          nbButton
+          fullWidth
+          status="success"
+          [disabled]="!userEditForm.dirty"
+          (click)="updateUser()"
+        >
+          Save Changes
+        </button>
+      </nb-card-footer>
     </nb-card>
   </section>
   <section class="other-info">
@@ -27,12 +38,12 @@
         <nb-tab tabTitle="Edit Profile">
           <div class="tab-content">
             <form [formGroup]="userEditForm">
-              <label for="description">Description</label>
+              <label for="introduction">Description</label>
               <textarea
                 nbInput
                 fullWidth
                 placeholder="Add description"
-                formControlName="description"
+                formControlName="introduction"
               ></textarea>
               <label for="lookingFor">Looking For</label>
               <textarea

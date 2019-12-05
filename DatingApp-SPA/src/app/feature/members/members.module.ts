@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { NbCardModule, NbIconModule, NbTabsetModule, NbInputModule, NbAlertModule } from "@nebular/theme";
+import { NbCardModule, NbIconModule, NbTabsetModule, NbInputModule, NbAlertModule, NbButtonModule } from "@nebular/theme";
 import { MembersListComponent } from "./members-list/members-list.component";
 import { MemberCardComponent } from "./member-card/member-card.component";
 import { MembersRoutingModule } from "./members-routing.module";
@@ -11,6 +11,7 @@ import { MemberEditComponent } from "./member-edit/member-edit.component";
 import { MemberListResolver } from "src/app/core/resolvers/member-list.resolver";
 import { MemberEditResolver } from "src/app/core/resolvers/member-edit.resolver";
 import { ReactiveFormsModule } from "@angular/forms";
+import { PreventUnsavedChangesGuard } from 'src/app/core/guards/prevent-unsaved-changes.guard';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { ReactiveFormsModule } from "@angular/forms";
     GalleryModule,
     ReactiveFormsModule,
     NbInputModule,
-    NbAlertModule
+    NbAlertModule,
+    NbButtonModule
   ],
   declarations: [
     MembersListComponent,
@@ -30,6 +32,6 @@ import { ReactiveFormsModule } from "@angular/forms";
     MemberDetailsComponent,
     MemberEditComponent
   ],
-  providers: [MemberDetailsResolver, MemberListResolver, MemberEditResolver]
+  providers: [MemberDetailsResolver, MemberListResolver, MemberEditResolver, PreventUnsavedChangesGuard]
 })
 export class MembersModule {}

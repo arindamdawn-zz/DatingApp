@@ -1,7 +1,10 @@
 .left {
   margin-left: auto;
 }
-h3{cursor: pointer;}
+
+h3 {
+  cursor: pointer;
+}
 
 .active {
   color: lightgreen;
@@ -9,4 +12,28 @@ h3{cursor: pointer;}
 
 nb-action {
   cursor: pointer;
+}
+
+nb-layout-header {
+  display: flex;
+}
+
+.branding {
+  width: 15rem;
+}
+
+.menu-right {
+  display: flex;
+  align-items: center;
+  img{
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 100%;
+  }
+}
+
+.nav-menus {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }

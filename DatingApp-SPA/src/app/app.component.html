@@ -1,25 +1,39 @@
 <main>
   <nb-layout>
     <nb-layout-header fixed>
-      <h3 routerLink="/">Dating App</h3>
-      <nb-actions class="left" *ngIf="loggedIn()" size="large">
-        <nb-action routerLink="/members" routerLinkActive="active"
-          >Matches</nb-action
-        >
-        <nb-action routerLink="/lists" routerLinkActive="active"
-          >Lists</nb-action
-        >
-        <nb-action routerLink="/messages" routerLinkActive="active"
-          >Messages</nb-action
-        >
-        <nb-action
-          class="profile"
-          [nbContextMenu]="items"
-          nbContextMenuTag="user"
-          nbContextMenuPlacement="bottom"
-          >{{ authService.decodedToken?.unique_name }}</nb-action
-        >
-      </nb-actions>
+      <div class="branding">
+        <h3 routerLink="/">Dating App</h3>
+      </div>
+      <div class="nav-menus">
+        <div class="menu-left">
+          <nb-actions *ngIf="loggedIn()" size="large">
+            <nb-action routerLink="/members" routerLinkActive="active"
+              >Matches</nb-action
+            >
+            <nb-action routerLink="/lists" routerLinkActive="active"
+              >Lists</nb-action
+            >
+            <nb-action routerLink="/messages" routerLinkActive="active"
+              >Messages</nb-action
+            >
+          </nb-actions>
+        </div>
+        <div class="menu-right">
+          <img
+            src="https://randomuser.me/api/portraits/women/18.jpg"
+            alt="profile-image"
+          />
+          <nb-actions size="large">
+            <nb-action
+              class="profile"
+              [nbContextMenu]="items"
+              nbContextMenuTag="user"
+              nbContextMenuPlacement="bottom"
+              >{{ authService.decodedToken?.unique_name }}</nb-action
+            >
+          </nb-actions>
+        </div>
+      </div>
     </nb-layout-header>
 
     <nb-layout-column>

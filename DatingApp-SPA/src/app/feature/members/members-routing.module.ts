@@ -6,6 +6,7 @@ import { MemberDetailsResolver } from "src/app/core/resolvers/member-details.res
 import { MemberListResolver } from "src/app/core/resolvers/member-list.resolver";
 import { MemberEditComponent } from "./member-edit/member-edit.component";
 import { MemberEditResolver } from "src/app/core/resolvers/member-edit.resolver";
+import { PreventUnsavedChangesGuard } from "src/app/core/guards/prevent-unsaved-changes.guard";
 
 const routes: Routes = [
   {
@@ -20,7 +21,8 @@ const routes: Routes = [
     component: MemberEditComponent,
     resolve: {
       user: MemberEditResolver
-    }
+    },
+    canDeactivate: [PreventUnsavedChangesGuard]
   },
   {
     path: ":id",
